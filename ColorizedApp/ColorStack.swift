@@ -28,13 +28,14 @@ struct ColorStack: View {
                 .foregroundColor(color)
                 .font(.headline)
             
-            Slider(value: $valueSlider, in: 0...255, step: 1) { isEditing in
-                if !isEditing {
-                    stringValue = String(lround(valueSlider))
-                    colorView = Color(red: valueSliderRed/255.0, green: valueSliderGreen/255.0, blue: valueSliderBlue/255.0)
-                }
-            }
-            .accentColor(color)
+            SliderViewColor(
+                color: color,
+                valueSlider: $valueSlider,
+                colorView: $colorView,
+                stringValue: $stringValue,
+                valueSliderRed: $valueSliderRed,
+                valueSliderGreen: $valueSliderGreen,
+                valueSliderBlue: $valueSliderBlue)
             
             TextField("val", text: $stringValue) { isEditing in
                 if isEditing {

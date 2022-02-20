@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var valueSliderRed = Double.random(in: 1...255)
-    @State private var valueSliderGreen = Double.random(in: 1...255)
-    @State private var valueSliderBlue = Double.random(in: 1...255)
-    @State private var colorView: Color = Color(red: 0.5, green: 0.5, blue: 0.5)
+    @State private var valueSliderRed = Double.random(in: 0...255)
+    @State private var valueSliderGreen = Double.random(in: 0...255)
+    @State private var valueSliderBlue = Double.random(in: 0...255)
+    
+    @State private var colorView: Color = Color(
+        red: 0.5,
+        green: 0.5,
+        blue: 0.5
+    )
     
     @State private var stringValueRed: String = ""
     @State private var stringValueGreen: String = ""
     @State private var stringValueBlue: String = ""
-    
-    let colorRed: Color = .red
-    let colorGreen: Color = .green
-    let colorBlue: Color = .blue
-    
-    
     
     var body: some View {
         ZStack {
@@ -30,7 +29,6 @@ struct ContentView: View {
                 .foregroundColor(.yellow)
             
             VStack {
-                
                 Spacer()
                 
                 ColorView(colorView: $colorView)
@@ -55,16 +53,20 @@ struct ContentView: View {
                     color: .green
                 )
                 
-                ColorStack(valueSlider: $valueSliderBlue, valueSliderRed: $valueSliderRed, valueSliderGreen: $valueSliderGreen, valueSliderBlue: $valueSliderBlue, colorView: $colorView, stringValue: $stringValueBlue, color: .blue
+                ColorStack(
+                    valueSlider: $valueSliderBlue,
+                    valueSliderRed: $valueSliderRed,
+                    valueSliderGreen: $valueSliderGreen,
+                    valueSliderBlue: $valueSliderBlue,
+                    colorView: $colorView,
+                    stringValue: $stringValueBlue,
+                    color: .blue
                 )
                 
                 Spacer()
             }
         }
-        
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

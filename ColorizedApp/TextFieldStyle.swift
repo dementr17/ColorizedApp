@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BorderViewModifier: ViewModifier {
     let color: Color
+    @FocusState var isInputActive: Bool
     
         func body(content: Content) -> some View {
         content
@@ -21,8 +22,18 @@ struct BorderViewModifier: ViewModifier {
             )
             .shadow(color: Color.gray, radius: 3, x: 1, y: 2)
             .multilineTextAlignment(.trailing)
-            .keyboardType(.numbersAndPunctuation)
             .font(.headline)
+            .keyboardType(.decimalPad)
+            .focused($isInputActive)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        isInputActive = false
+                    }
+                }
+            }
+            
     }
 }
 
