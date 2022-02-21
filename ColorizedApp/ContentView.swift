@@ -18,10 +18,6 @@ struct ContentView: View {
         blue: 0.5
     )
     
-//    @State private var stringValueRed: String = ""
-//    @State private var stringValueGreen: String = ""
-//    @State private var stringValueBlue: String = ""
-    
     var body: some View {
         ZStack {
             Rectangle()
@@ -29,16 +25,7 @@ struct ContentView: View {
                 .foregroundColor(.yellow)
             
             VStack {
-//                ColorView(colorView: $colorView)
-//                ColorStack(
-//                    valueSlider: $valueSliderRed,
-//                    valueSliderRed: $valueSliderRed,
-//                    valueSliderGreen: $valueSliderGreen,
-//                    valueSliderBlue: $valueSliderBlue,
-//                    colorView: $colorView,
-//                    stringValue: $stringValueRed,
-//                    color: .red
-//                )
+
                 Spacer()
                 
                 ColorView(red: valueSliderRed, green: valueSliderGreen, blue: valueSliderBlue)

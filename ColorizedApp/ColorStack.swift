@@ -12,14 +12,7 @@ struct ColorStack: View {
     @State var stringValue = ""
     
     @Binding var valueSlider: Double
-    
-//    @Binding var valueSliderRed: Double
-//    @Binding var valueSliderGreen: Double
-//    @Binding var valueSliderBlue: Double
-    
-//    @Binding var colorView: Color
-    
-    
+
     let color: Color
     
     var body: some View {
@@ -30,15 +23,7 @@ struct ColorStack: View {
                 .font(.headline)
             
             SliderViewColor(valueSlider: $valueSlider, stringValue: $stringValue, color: color)
-//            SliderViewColor(
-//                color: color,
-//                valueSlider: $valueSlider,
-//                colorView: $colorView,
-//                stringValue: $stringValue,
-//                valueSliderRed: $valueSliderRed,
-//                valueSliderGreen: $valueSliderGreen,
-//                valueSliderBlue: $valueSliderBlue)
-            
+
             TextField("val", text: $stringValue) { isEditing in
                 if isEditing {
                     stringValue = String(lround(valueSlider))
@@ -56,16 +41,6 @@ struct ColorStack: View {
     }
     
     private func checkingFormat() {
-//        if let doubleValue = Double(stringValue) {
-//            if doubleValue >= 0.0 && doubleValue <= 255.0 {
-//                valueSlider = doubleValue
-//            }
-//            else {
-//                alertPresented.toggle()
-//            }
-//        } else {
-//            alertPresented.toggle()
-//        }
         if let value = Double(stringValue), (0...255).contains(value) {
             valueSlider = value
         } else {
@@ -73,9 +48,3 @@ struct ColorStack: View {
         }
     }
 }
-
-//struct ColorStack_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ColorStack()
-//    }
-//}
