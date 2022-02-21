@@ -9,15 +9,16 @@ import SwiftUI
 
 struct ColorStack: View {
     @State private var alertPresented = false
+    @State var stringValue = ""
     
     @Binding var valueSlider: Double
     
-    @Binding var valueSliderRed: Double
-    @Binding var valueSliderGreen: Double
-    @Binding var valueSliderBlue: Double
+//    @Binding var valueSliderRed: Double
+//    @Binding var valueSliderGreen: Double
+//    @Binding var valueSliderBlue: Double
     
-    @Binding var colorView: Color
-    @Binding var stringValue: String
+//    @Binding var colorView: Color
+    
     
     let color: Color
     
@@ -28,14 +29,15 @@ struct ColorStack: View {
                 .foregroundColor(color)
                 .font(.headline)
             
-            SliderViewColor(
-                color: color,
-                valueSlider: $valueSlider,
-                colorView: $colorView,
-                stringValue: $stringValue,
-                valueSliderRed: $valueSliderRed,
-                valueSliderGreen: $valueSliderGreen,
-                valueSliderBlue: $valueSliderBlue)
+            SliderViewColor(valueSlider: $valueSlider, stringValue: $stringValue, color: color)
+//            SliderViewColor(
+//                color: color,
+//                valueSlider: $valueSlider,
+//                colorView: $colorView,
+//                stringValue: $stringValue,
+//                valueSliderRed: $valueSliderRed,
+//                valueSliderGreen: $valueSliderGreen,
+//                valueSliderBlue: $valueSliderBlue)
             
             TextField("val", text: $stringValue) { isEditing in
                 if isEditing {
@@ -53,18 +55,22 @@ struct ColorStack: View {
         .padding(.horizontal)
     }
     
-    func checkingFormat() {
-        if let doubleValue = Double(stringValue) {
-            if doubleValue >= 0.0 && doubleValue <= 255.0 {
-                valueSlider = doubleValue
-            }
-            else {
-                alertPresented.toggle()
-            }
+    private func checkingFormat() {
+//        if let doubleValue = Double(stringValue) {
+//            if doubleValue >= 0.0 && doubleValue <= 255.0 {
+//                valueSlider = doubleValue
+//            }
+//            else {
+//                alertPresented.toggle()
+//            }
+//        } else {
+//            alertPresented.toggle()
+//        }
+        if let value = Double(stringValue), (0...255).contains(value) {
+            valueSlider = value
         } else {
             alertPresented.toggle()
         }
-//
     }
 }
 

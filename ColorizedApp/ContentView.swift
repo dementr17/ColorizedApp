@@ -18,9 +18,9 @@ struct ContentView: View {
         blue: 0.5
     )
     
-    @State private var stringValueRed: String = ""
-    @State private var stringValueGreen: String = ""
-    @State private var stringValueBlue: String = ""
+//    @State private var stringValueRed: String = ""
+//    @State private var stringValueGreen: String = ""
+//    @State private var stringValueBlue: String = ""
     
     var body: some View {
         ZStack {
@@ -29,39 +29,25 @@ struct ContentView: View {
                 .foregroundColor(.yellow)
             
             VStack {
+//                ColorView(colorView: $colorView)
+//                ColorStack(
+//                    valueSlider: $valueSliderRed,
+//                    valueSliderRed: $valueSliderRed,
+//                    valueSliderGreen: $valueSliderGreen,
+//                    valueSliderBlue: $valueSliderBlue,
+//                    colorView: $colorView,
+//                    stringValue: $stringValueRed,
+//                    color: .red
+//                )
                 Spacer()
                 
-                ColorView(colorView: $colorView)
-                    
-                ColorStack(
-                    valueSlider: $valueSliderRed,
-                    valueSliderRed: $valueSliderRed,
-                    valueSliderGreen: $valueSliderGreen,
-                    valueSliderBlue: $valueSliderBlue,
-                    colorView: $colorView,
-                    stringValue: $stringValueRed,
-                    color: .red
-                )
+                ColorView(red: valueSliderRed, green: valueSliderGreen, blue: valueSliderBlue)
                 
-                ColorStack(
-                    valueSlider: $valueSliderGreen,
-                    valueSliderRed: $valueSliderRed,
-                    valueSliderGreen: $valueSliderGreen,
-                    valueSliderBlue: $valueSliderBlue,
-                    colorView: $colorView,
-                    stringValue: $stringValueGreen,
-                    color: .green
-                )
+                ColorStack(valueSlider: $valueSliderRed, color: .red)
                 
-                ColorStack(
-                    valueSlider: $valueSliderBlue,
-                    valueSliderRed: $valueSliderRed,
-                    valueSliderGreen: $valueSliderGreen,
-                    valueSliderBlue: $valueSliderBlue,
-                    colorView: $colorView,
-                    stringValue: $stringValueBlue,
-                    color: .blue
-                )
+                ColorStack(valueSlider: $valueSliderGreen, color: .green)
+                
+                ColorStack(valueSlider: $valueSliderBlue, color: .blue)
                 
                 Spacer()
             }
